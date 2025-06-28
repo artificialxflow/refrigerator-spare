@@ -1,0 +1,417 @@
+<!--
+  MadeByPersians.ir - Refrigerator Spare Parts Catalog (Kazakh)
+  Author: [Your Name]
+  Description: Kazakh landing page for refrigerator spare parts catalog with categories and products, LTR and responsive, using Bootstrap and loading data from JSON files
+  Email: sales@madebypersians.ir | WhatsApp: +989214843361
+  Version: Kazakh (index-kk.html)
+-->
+<!DOCTYPE html>
+<html lang="kk" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тоңазытқышқа арналған қосалқы бөлшектер каталогы | MadeByPersians.ir</title>
+    <link rel="icon" href="logo-rb.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+      body {
+        background-color: #f8fafc;
+        font-family: 'Tahoma', 'Vazirmatn', sans-serif;
+      }
+      .brand-logo { height: 48px; }
+      .breadcrumb { background: #e0e7ff; border-radius: 0.5rem; padding: 0.5rem 1rem; }
+      .product-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .product-card img { border-radius: 12px 12px 0 0; object-fit: cover; }
+      .why-us-icon { font-size: 2rem; color: #0d6efd; }
+      .footer {
+        background: #1e293b;
+        color: #fff;
+        padding: 2rem 0 1rem 0;
+        text-align: center;
+      }
+      .footer .fa-heart {
+        color: #ef4444;
+        margin: 0 0.2rem;
+      }
+      .contact-link { color: #0d6efd; text-decoration: none; }
+      .custom-header {
+        background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(30,64,175,0.08);
+      }
+      .feature-card {
+        background: #e0f2fe;
+        border: none;
+        box-shadow: 0 2px 12px rgba(37,99,235,0.08);
+        transition: transform 0.2s;
+      }
+      .feature-card:nth-child(2) {
+        background: #fef9c3;
+      }
+      .feature-card:nth-child(3) {
+        background: #dcfce7;
+      }
+      .feature-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 6px 24px rgba(37,99,235,0.16);
+      }
+      .category-section {
+        background: #f1f5f9;
+        border-radius: 1rem;
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+      }
+      .product-card:hover {
+        box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+        transform: translateY(-4px) scale(1.02);
+        border-color: #2563eb;
+      }
+      .lang-selector {
+        background: #fff;
+        border: 1px solid #e0e7ff;
+        border-radius: 0.5rem;
+        color: #1e40af;
+      }
+      @media (max-width: 768px) {
+        .product-card { margin-bottom: 1.5rem; }
+        .brand-logo { height: 40px; }
+      }
+      .category-card {
+        border-radius: 1.5rem;
+        margin-bottom: 2.5rem;
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        box-shadow: 0 4px 24px rgba(37,99,235,0.10);
+        color: #fff;
+        position: relative;
+      }
+      .category-card.bg-1 { background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%); }
+      .category-card.bg-2 { background: linear-gradient(90deg, #16a34a 0%, #22d3ee 100%); }
+      .category-card.bg-3 { background: linear-gradient(90deg, #f59e42 0%, #fbbf24 100%); }
+      .category-card.bg-4 { background: linear-gradient(90deg, #a21caf 0%, #f472b6 100%); }
+      .category-card.bg-5 { background: linear-gradient(90deg, #0ea5e9 0%, #818cf8 100%); }
+      .category-card.bg-6 { background: linear-gradient(90deg, #f43f5e 0%, #fbbf24 100%); }
+      .category-card.bg-7 { background: linear-gradient(90deg, #059669 0%, #f472b6 100%); }
+      .category-card.bg-8 { background: linear-gradient(90deg, #eab308 0%, #38bdf8 100%); }
+      .category-card.bg-9 { background: linear-gradient(90deg, #6366f1 0%, #f472b6 100%); }
+      .category-breadcrumb {
+        background: rgba(255,255,255,0.15);
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: #fff;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      }
+      .product-count {
+        font-size: 1.05rem;
+        color: #fff;
+        background: rgba(0,0,0,0.10);
+        border-radius: 0.5rem;
+        padding: 0.3rem 1rem;
+        margin-bottom: 1.2rem;
+        display: inline-block;
+        font-weight: 500;
+        direction: ltr;
+      }
+      .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .product-card {
+        width: 320px;
+        max-width: 340px;
+        background: #fff;
+        color: #222;
+        border-radius: 1rem;
+        box-shadow: 0 2px 16px rgba(16,24,40,0.13);
+        transition: box-shadow 0.2s, transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 0;
+      }
+      .product-card:hover {
+        box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+        transform: translateY(-4px) scale(1.03);
+        border: 2px solid #2563eb;
+        z-index: 2;
+      }
+      .product-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        background: #f1f5f9;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      }
+      .product-card .product-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+        text-align: center;
+        min-height: 48px;
+        color: #222;
+      }
+      @media (max-width: 1200px) {
+        .product-card { width: 260px; max-width: 280px; }
+        .product-card img { height: 160px; }
+      }
+      @media (max-width: 992px) {
+        .product-grid { gap: 2rem 1.5rem; }
+        .product-card { width: 45vw; max-width: 95vw; }
+      }
+      @media (max-width: 768px) {
+        .product-grid { gap: 1.2rem 0.5rem; }
+        .product-card {
+          width: 90vw;
+          max-width: 98vw;
+          padding: 0.75rem 0.5rem 1rem 0.5rem;
+        }
+        .product-card img {
+          height: 140px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="custom-header py-3 mb-4">
+      <div class="container d-flex flex-wrap align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <img src="logo-rb.png" alt="Логотип" class="brand-logo me-2">
+          <span class="fs-4 fw-bold">MadeByPersians.ir</span>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <a href="mailto:sales@madebypersians.ir" class="d-none d-md-inline" style="background:#fff;color:#2563eb;font-weight:700;padding:0.35rem 1.1rem 0.35rem 1.1rem;border-radius:2rem;box-shadow:0 2px 8px rgba(37,99,235,0.10);display:flex;align-items:center;gap:0.4rem;text-decoration:none;">
+            <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24' style='vertical-align:middle;'><path fill='#2563eb' d='M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.5-.5a.5.5 0 0 0-.5.5v.2l8 5.6 8-5.6V6.5a.5.5 0 0 0-.5-.5h-15Zm15 13a.5.5 0 0 0 .5-.5V9.1l-7.5 5.25a1 1 0 0 1-1.16 0L4 9.1v8.9a.5.5 0 0 0 .5.5h15Z'/></svg>
+            sales@madebypersians.ir
+          </a>
+          <a href="https://wa.me/989214843361" class="d-none d-md-inline" style="background:#25d366;color:#fff;font-weight:700;padding:0.35rem 1.1rem 0.35rem 1.1rem;border-radius:2rem;box-shadow:0 2px 8px rgba(37,99,235,0.10);display:flex;align-items:center;gap:0.4rem;text-decoration:none;">
+            <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24' style='vertical-align:middle;'><path fill='#fff' d='M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.09-1.33A9.96 9.96 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm0 18c-1.61 0-3.16-.39-4.5-1.13l-.32-.17-3.02.79.8-2.94-.2-.33A7.96 7.96 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8Zm4.29-5.18c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.51.12-.15.23-.58.75-.71.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.13-.68-.6-1.14-1.34-1.28-1.57-.13-.23-.01-.35.11-.46.12-.12.23-.26.35-.39.12-.13.15-.23.23-.38.08-.15.04-.28-.02-.4-.06-.12-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13-.01-.28-.01-.43-.01-.15 0-.4.06-.61.28-.21.22-.8.78-.8 1.9 0 1.12.82 2.2.94 2.36.12.15 1.61 2.46 3.91 3.35.55.19.98.3 1.31.38.55.14 1.05.12 1.45.07.44-.07 1.36-.56 1.55-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27Z'/></svg>
+            WhatsApp: +989214843361
+          </a>
+          <!-- Language Switcher -->
+          <select id="langSelect" class="form-select lang-selector" style="width:auto;min-width:120px;direction:ltr;">
+            <option value="index-fa.html">فارسی</option>
+            <option value="index-en.html">English</option>
+            <option value="index-ar.html">العربية</option>
+            <option value="index-ru.html">Русский</option>
+            <option value="index-ur.html">اردو</option>
+            <option value="index-kk.html" selected>Қазақша</option>
+            <option value="index-ku.html">کوردی</option>
+            <option value="index-hy.html">Հայերեն</option>
+            <option value="index-tr.html">Türkçe</option>
+          </select>
+        </div>
+      </div>
+    </header>
+    <section class="container mb-4">
+      <div class="bg-white rounded-3 p-4 shadow-sm text-center">
+        <h1 class="mb-3">MadeByPersians сайтына қош келдіңіз!</h1>
+        <p class="lead"><b>MadeByPersians</b> сайтында біз Иранның жетекші өндірушілерінен ең жақсы өнімдерді тікелей ұсынамыз!</p>
+        <div class="row mt-4">
+          <div class="col-md-4 mb-3">
+            <div class="why-us-icon mb-2">🔗</div>
+            <h5>Тікелей қолжетімділік</h5>
+            <p class="mb-0">Өндірушімен тікелей байланыс</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="why-us-icon mb-2">⭐</div>
+            <h5>Жоғары сапа</h5>
+            <p class="mb-0">Сапа мен түпнұсқалыққа кепілдік</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="why-us-icon mb-2">🚚</div>
+            <h5>Оңай импорт</h5>
+            <p class="mb-0">Әлем бойынша жылдам және сенімді жеткізу</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container mb-5">
+      <h2 class="mb-4 text-center">Тоңазытқышқа арналған қосалқы бөлшектер санаттары</h2>
+      <div id="category-grid-section" class="row g-4 justify-content-center"></div>
+    </section>
+    <section class="container mb-5">
+      <h2 class="mb-4 text-center" id="products-section-title">Барлық өнімдер</h2>
+      <div id="products-section"></div>
+    </section>
+    <section class="container mb-4">
+      <div class="bg-white rounded-3 p-4 shadow-sm text-center">
+        <h4>Бізбен байланысыңыз</h4>
+        <p>Тапсырыс беру немесе кеңес алу үшін бізге хабарласыңыз:</p>
+        <a href="mailto:sales@madebypersians.ir" class="contact-link d-block mb-2">sales@madebypersians.ir</a>
+        <a href="https://wa.me/989214843361" class="contact-link d-block">WhatsApp: +989214843361</a>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <p class="mb-1">MadeByPersians.ir сайтынан сүйіспеншілікпен жасалған <i class="fa fa-heart"></i></p>
+        <p class="mb-0">Көбірек өнімдер көру үшін біздің сайтқа кіріңіз.</p>
+      </div>
+    </footer>
+    <!-- Floating Scroll to Top Button -->
+    <button id="scroll-to-top-btn" title="Жоғарыға оралу" style="display:none;position:fixed;bottom:32px;right:32px;z-index:9999;width:56px;height:56px;border-radius:50%;background:#2563eb;color:#fff;border:none;box-shadow:0 4px 16px rgba(37,99,235,0.18);font-size:2rem;align-items:center;justify-content:center;transition:opacity 0.2s;cursor:pointer;">
+      <svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' fill='none' viewBox='0 0 24 24'><path fill='currentColor' d='M12 5.5c.28 0 .53.11.71.29l6 6a1 1 0 0 1-1.42 1.42L13 9.41V18a1 1 0 1 1-2 0V9.41l-4.29 4.3A1 1 0 0 1 5.3 12l6-6a1 1 0 0 1 .7-.29Z'/></svg>
+    </button>
+    <script>
+      const jsonFiles = [
+        'capillary_tube.json',
+        'condenser.json',
+        'element_heater.json',
+        'joint.json',
+        'refrigerator_fan.json',
+        'sensor.json',
+        'suction.json',
+        'threeson_page.json',
+        'timer.json'
+      ];
+      const categoryColors = ['bg-1','bg-2','bg-3','bg-4','bg-5','bg-6','bg-7','bg-8','bg-9'];
+
+      let categoriesCache = [];
+      let allProductsCache = [];
+
+      async function loadCategoriesAndProducts() {
+        const categoryGridSection = document.getElementById('category-grid-section');
+        const productsSection = document.getElementById('products-section');
+        const productsSectionTitle = document.getElementById('products-section-title');
+        categoryGridSection.innerHTML = '';
+        productsSection.innerHTML = '';
+        categoriesCache = [];
+        allProductsCache = [];
+        let colorIdx = 0;
+        // Fetch all categories and products
+        for (const file of jsonFiles) {
+          try {
+            const res = await fetch('multilingual_json/' + file);
+            if (!res.ok) continue;
+            const data = await res.json();
+            categoriesCache.push(data);
+            if (Array.isArray(data.products)) {
+              allProductsCache = allProductsCache.concat(data.products.map(p => ({
+                ...p,
+                name: p.name && typeof p.name === 'object' && p.name.kk ? p.name.kk : (typeof p.name === 'string' ? p.name : ''),
+                category: data.category_name && typeof data.category_name === 'object' && data.category_name.kk ? data.category_name.kk : (typeof data.category_name === 'string' ? data.category_name : '')
+              })));
+            }
+          } catch (e) { /* skip */ }
+        }
+        // Render category cards
+        categoriesCache.forEach((cat, idx) => {
+          const col = document.createElement('div');
+          col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 d-flex';
+          const card = document.createElement('div');
+          card.className = `category-card ${categoryColors[idx % categoryColors.length]} text-center p-3 w-100 h-100 d-flex flex-column align-items-center justify-content-center`;
+          card.style.cursor = 'pointer';
+          // Main image (first product) - larger and clearer
+          let imgHtml = '';
+          if (cat.products && cat.products[0] && cat.products[0].image) {
+            imgHtml = `<img src="${cat.products[0].image}" alt="${cat.category_name && cat.category_name.kk ? cat.category_name.kk : ''}" style="width:170px;height:170px;object-fit:contain;border-radius:1.7rem;margin-bottom:2rem;background:#fff;box-shadow:none;">`;
+          }
+          const catNameKk = cat.category_name && typeof cat.category_name === 'object' && cat.category_name.kk ? cat.category_name.kk : (typeof cat.category_name === 'string' ? cat.category_name : '');
+          card.innerHTML = `
+            <div class="d-flex flex-column align-items-center justify-content-center w-100">
+              ${imgHtml}
+              <span class="fw-bold d-flex align-items-center justify-content-center" style="color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.10);font-size:1.25rem;min-height:38px;white-space:nowrap;">${catNameKk}</span>
+            </div>
+          `;
+          card.onclick = () => filterProductsByCategory(catNameKk);
+          col.appendChild(card);
+          categoryGridSection.appendChild(col);
+        });
+        // Render all products by default
+        renderProducts(allProductsCache, 'Барлық өнімдер');
+      }
+
+      function renderProducts(products, title) {
+        const productsSection = document.getElementById('products-section');
+        const productsSectionTitle = document.getElementById('products-section-title');
+        productsSection.innerHTML = '';
+        productsSectionTitle.innerText = title;
+        if (!products || products.length === 0) {
+          productsSection.innerHTML = '<div class="text-center text-danger">Өнімдер табылмады.</div>';
+          return;
+        }
+        const grid = document.createElement('div');
+        grid.className = 'product-grid';
+        products.forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-name">${product.name}</div>
+            <div class="small text-secondary mt-1">${product.category || ''}</div>
+          `;
+          grid.appendChild(card);
+        });
+        productsSection.appendChild(grid);
+      }
+
+      function filterProductsByCategory(categoryName) {
+        const filtered = allProductsCache.filter(p => p.category === categoryName);
+        renderProducts(filtered, categoryName);
+        // Scroll to products section
+        const productsSectionTitle = document.getElementById('products-section-title');
+        productsSectionTitle.scrollIntoView({behavior: 'smooth'});
+      }
+
+      function getLangFile(lang) {
+        switch(lang) {
+          case 'fa': return 'index.html';
+          case 'en': return 'index-en.html';
+          case 'ar': return 'index-ar.html';
+          case 'ru': return 'index-ru.html';
+          case 'ur': return 'index-ur.html';
+          case 'kk': return 'index-kk.html';
+          case 'ku': return 'index-ku.html';
+          case 'hy': return 'index-hy.html';
+          case 'tr': return 'index-tr.html';
+          default: return 'index.html';
+        }
+      }
+      function handleLangChange(e) {
+        const targetFile = e.target.value;
+        if (window.location.pathname.endsWith(targetFile)) {
+          window.location.reload();
+        } else {
+          window.location.href = targetFile;
+        }
+      }
+      document.getElementById('langSelect')?.addEventListener('change', handleLangChange);
+      document.getElementById('langSelectMobile')?.addEventListener('change', handleLangChange);
+      // Ensure categories and products are loaded on page load
+      window.addEventListener('DOMContentLoaded', loadCategoriesAndProducts);
+
+      // Floating scroll to top button logic
+      const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+          scrollToTopBtn.style.display = 'flex';
+          scrollToTopBtn.style.opacity = '1';
+        } else {
+          scrollToTopBtn.style.opacity = '0';
+          setTimeout(() => {
+            if (window.scrollY <= 200) scrollToTopBtn.style.display = 'none';
+          }, 200);
+        }
+      });
+      scrollToTopBtn.onclick = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      };
+    </script>
+  </body>
+</html> 
