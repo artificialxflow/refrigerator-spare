@@ -1,5 +1,15 @@
 {
-  "category_name": "Threeson Sayfası",
+  "category_name": {
+    "fa": "صفحه تریزون",
+    "en": "Threeson Page",
+    "ar": "صفحة تریزون",
+    "ru": "Страница Тризон",
+    "ur": "صفحہ تریزون",
+    "kk": "Threeson беті",
+    "ku": "Rûpelê Threeson",
+    "hy": "Թրիզոն էջ",
+    "tr": "Threeson Sayfası"
+  },
   "category_url": "https://defrost.ir/shop/product-category/spare-parts-for-refrigerators/threeson-page/",
   "products": [
     {
