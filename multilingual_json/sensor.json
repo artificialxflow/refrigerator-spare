@@ -1,5 +1,15 @@
 {
-  "category_name": "sensor",
+  "category_name": {
+    "fa": "سنسور",
+    "en": "Sensor",
+    "ar": "مستشعر",
+    "ru": "Датчик",
+    "ur": "سینسر",
+    "kk": "Датчик",
+    "ku": "سنسور",
+    "hy": "Սենսոր",
+    "tr": "Sensör"
+  },
   "category_url": "https://defrost.ir/shop/product-category/spare-parts-for-refrigerators/sensor/",
   "products": [
     {
