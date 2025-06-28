@@ -295,15 +295,15 @@
   <!-- Catalog JS -->
   <script>
     const jsonFiles = [
-      'capillary_tube.json',
-      'condenser.json',
-      'element_heater.json',
-      'joint.json',
-      'refrigerator_fan.json',
-      'sensor.json',
-      'suction.json',
-      'threeson_page.json',
-      'timer.json'
+      'multilingual_json/capillary_tube.json',
+      'multilingual_json/condenser.json',
+      'multilingual_json/element_heater.json',
+      'multilingual_json/joint.json',
+      'multilingual_json/refrigerator_fan.json',
+      'multilingual_json/sensor.json',
+      'multilingual_json/suction.json',
+      'multilingual_json/threeson_page.json',
+      'multilingual_json/timer.json'
     ];
     const categoryColors = ['bg-1','bg-2','bg-3','bg-4','bg-5','bg-6','bg-7','bg-8','bg-9'];
 
@@ -327,7 +327,7 @@
           const data = await res.json();
           categoriesCache.push(data);
           if (Array.isArray(data.products)) {
-            allProductsCache = allProductsCache.concat(data.products.map(p => ({...p, category: data.category_name})));
+            allProductsCache = allProductsCache.concat(data.products.map(p => ({...p, category: data.category_name && data.category_name.fa ? data.category_name.fa : ''})));
           }
         } catch (e) { /* skip */ }
       }
@@ -341,15 +341,17 @@
         // تصویر شاخص (اولین محصول) - بزرگ‌تر و واضح‌تر
         let imgHtml = '';
         if (cat.products && cat.products[0] && cat.products[0].image) {
-          imgHtml = `<img src="${cat.products[0].image}" alt="${cat.category_name}" style="width:170px;height:170px;object-fit:contain;border-radius:1.7rem;margin-bottom:2rem;background:#fff;box-shadow:none;">`;
+          imgHtml = `<img src="${cat.products[0].image}" alt="${cat.category_name && cat.category_name.fa ? cat.category_name.fa : 'بدون نام'}" style="width:170px;height:170px;object-fit:contain;border-radius:1.7rem;margin-bottom:2rem;background:#fff;box-shadow:none;">`;
         }
+        // Always use category_name.fa if available, fallback to 'بدون نام'
+        const catNameFa = cat.category_name && typeof cat.category_name === 'object' && cat.category_name.fa ? cat.category_name.fa : (typeof cat.category_name === 'string' ? cat.category_name : 'بدون نام');
         card.innerHTML = `
           <div class="d-flex flex-column align-items-center justify-content-center w-100">
             ${imgHtml}
-            <span class="fw-bold d-flex align-items-center justify-content-center" style="color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.10);font-size:1.25rem;min-height:38px;white-space:nowrap;">${cat.category_name}</span>
+            <span class="fw-bold d-flex align-items-center justify-content-center" style="color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.10);font-size:1.25rem;min-height:38px;white-space:nowrap;">${catNameFa}</span>
           </div>
         `;
-        card.onclick = () => filterProductsByCategory(cat.category_name);
+        card.onclick = () => filterProductsByCategory(catNameFa);
         col.appendChild(card);
         categoryGridSection.appendChild(col);
       });
@@ -372,11 +374,10 @@
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-          <img src="${product.image}" alt="${product.name}">
-          <div class="product-name">${product.name}</div>
+          <img src="${product.image}" alt="${product.name && product.name.fa ? product.name.fa : ''}">
+          <div class="product-name">${product.name && product.name.fa ? product.name.fa : ''}</div>
           <div class="small text-secondary mt-1">${product.category || ''}</div>
         `;
-        card.onclick = () => window.open(product.url, '_blank');
         grid.appendChild(card);
       });
       productsSection.appendChild(grid);
@@ -408,6 +409,29 @@
     };
 
     window.addEventListener('DOMContentLoaded', loadCategoriesAndProducts);
+  </script>
+  <!-- Language switcher logic -->
+  <script>
+    function getLangFile(lang) {
+      switch(lang) {
+        case 'fa': return 'index.html';
+        case 'en': return 'index-en.html';
+        case 'ar': return 'index-ar.html';
+        case 'ru': return 'index-ru.html';
+        case 'ur': return 'index-ur.html';
+        case 'kk': return 'index-kk.html';
+        case 'ku': return 'index-ku.html';
+        case 'hy': return 'index-hy.html';
+        case 'tr': return 'index-tr.html';
+        default: return 'index.html';
+      }
+    }
+    function handleLangChange(e) {
+      const lang = e.target.value;
+      window.location.href = getLangFile(lang);
+    }
+    document.getElementById('langSelect')?.addEventListener('change', handleLangChange);
+    document.getElementById('langSelectMobile')?.addEventListener('change', handleLangChange);
   </script>
 </body>
 </html> 
