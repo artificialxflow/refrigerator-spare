@@ -1,0 +1,9 @@
+[
+  { "code": "fa", "name": "فارسی", "en_name": "Persian", "direction": "rtl" },
+  { "code": "ar", "name": "العربية", "en_name": "Arabic", "direction": "rtl" },
+  { "code": "en", "name": "English", "en_name": "English", "direction": "ltr" },
+  { "code": "ru", "name": "Русский", "en_name": "Russian", "direction": "ltr" },
+  { "code": "ur", "name": "اردو", "en_name": "Urdu", "direction": "rtl" },
+  { "code": "kk", "name": "Қазақша", "en_name": "Kazakh", "direction": "ltr" },
+  { "code": "ku", "name": "کوردی", "en_name": "Kurdish (Sorani)", "direction": "rtl" }
+] 
