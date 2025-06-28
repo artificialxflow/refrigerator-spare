@@ -1,5 +1,15 @@
 {
-  "category_name": "element heater",
+  "category_name": {
+    "fa": "المنت یخچال",
+    "en": "Element Heater",
+    "ar": "عنصر التسخين",
+    "ru": "Нагревательный элемент",
+    "ur": "ہیٹر ایلیمینٹ",
+    "kk": "Жылытқыш элемент",
+    "ku": "ئه‌لیمانتی گه‌رمکردن",
+    "hy": "Տաքացուցիչ տարր",
+    "tr": "Rezistans"
+  },
   "category_url": "https://defrost.ir/shop/product-category/spare-parts-for-refrigerators/element-heater/",
   "products": [
     {
