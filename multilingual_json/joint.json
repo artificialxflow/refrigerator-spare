@@ -1,0 +1,149 @@
+{
+  "category_name": {
+    "fa": "جوینت",
+    "en": "Joint",
+    "ar": "وصلة",
+    "ru": "Соединение",
+    "ur": "جوینت",
+    "kk": "Жалғастыру",
+    "ku": "جوینت",
+    "hy": "Միակցում"
+  },
+  "category_url": "https://defrost.ir/shop/product-category/spare-parts-for-refrigerators/joint/",
+  "products": [
+    {
+      "name": {
+        "fa": "جوینت بلند",
+        "en": "Long Joint",
+        "ar": "وصلة طويلة",
+        "ru": "Длинное соединение",
+        "ur": "جوینت بلند",
+        "kk": "Ұзын жалғастыру",
+        "ku": "جوینت بلند",
+        "hy": "Դերի միակցում"
+      },
+      "url": "https://defrost.ir/shop/product/%d8%ac%d9%88%db%8c%d9%86%d8%aa-%d8%a8%d9%84%d9%86%d8%af/",
+      "image": "https://defrost.ir/shop/wp-content/uploads/2020/09/جوینت-بلند-600x600.jpg",
+      "description": {
+        "fa": "",
+        "en": "",
+        "ar": "",
+        "ru": "",
+        "ur": "",
+        "kk": "",
+        "ku": "",
+        "hy": ""
+      }
+    },
+    {
+      "name": {
+        "fa": "جوینت بلند",
+        "en": "Long Joint",
+        "ar": "وصلة طويلة",
+        "ru": "Длинное соединение",
+        "kk": "Ұзын жалғастыру",
+        "ku": "جوینت بلند",
+        "hy": "Դերի միակցում"
+      },
+      "url": "https://defrost.ir/shop/product/%d8%ac%d9%88%db%8c%d9%86%d8%aa-%d8%a8%d9%84%d9%86%d8%af/",
+      "image": "https://defrost.ir/shop/wp-content/uploads/2020/09/جوینت-بلند-600x600.jpg",
+      "description": {
+        "fa": "",
+        "en": "",
+        "ar": "",
+        "ru": "",
+        "kk": "",
+        "ku": "",
+        "hy": ""
+      }
+    },
+    {
+      "name": {
+        "fa": "جوینت کوتاه",
+        "en": "Short Joint",
+        "ar": "وصلة قصيرة",
+        "ru": "Короткое соединение",
+        "kk": "Қысқa жалғастыру",
+        "ku": "جوینت کوتاه",
+        "hy": "Փոքր միակցում"
+      },
+      "url": "https://defrost.ir/shop/product/%d8%ac%d9%88%db%8c%d9%86%d8%aa-%da%a9%d9%88%d8%aa%d8%a7%d9%87/",
+      "image": "https://defrost.ir/shop/wp-content/uploads/2020/09/جوینت-کوتاه-600x600.jpg",
+      "description": {
+        "fa": "",
+        "en": "",
+        "ar": "",
+        "ru": "",
+        "kk": "",
+        "ku": "",
+        "hy": ""
+      }
+    },
+    {
+      "name": {
+        "fa": "جوینت کوتاه",
+        "en": "Short Joint",
+        "ar": "وصلة قصيرة",
+        "ru": "Короткое соединение",
+        "kk": "Қысқa жалғастыру",
+        "ku": "جوینت کوتاه",
+        "hy": "Փոքր միակցում"
+      },
+      "url": "https://defrost.ir/shop/product/%d8%ac%d9%88%db%8c%d9%86%d8%aa-%da%a9%d9%88%d8%aa%d8%a7%d9%87/",
+      "image": "https://defrost.ir/shop/wp-content/uploads/2020/09/جوینت-کوتاه-600x600.jpg",
+      "description": {
+        "fa": "",
+        "en": "",
+        "ar": "",
+        "ru": "",
+        "kk": "",
+        "ku": "",
+        "hy": ""
+      }
+    },
+    {
+      "name": {
+        "fa": "جوینت کوتاه سرگشاد",
+        "en": "Short Wide Joint",
+        "ar": "وصلة قصيرة واسعة",
+        "ru": "Короткое широкое соединение",
+        "kk": "Қысқa кесінді",
+        "ku": "جوینت کوتاه سرگشاد",
+        "hy": "Փոքր լայն միակցում"
+      },
+      "url": "https://defrost.ir/shop/product/%d8%ac%d9%88%db%8c%d9%86%d8%aa/",
+      "image": "https://defrost.ir/shop/wp-content/uploads/2018/01/جوینت-کوتاه-سرگشاد1-600x600.jpg",
+      "description": {
+        "fa": "",
+        "en": "",
+        "ar": "",
+        "ru": "",
+        "kk": "",
+        "ku": "",
+        "hy": ""
+      }
+    },
+    {
+      "name": {
+        "fa": "جوینت کوتاه سرگشاد",
+        "en": "Short Wide Joint",
+        "ar": "وصلة قصيرة واسعة",
+        "ru": "Короткое широкое соединение",
+        "kk": "Қысқa кесінді",
+        "ku": "جوینت کوتاه سرگشاد",
+        "hy": "Փոքր լայն միակցում"
+      },
+      "url": "https://defrost.ir/shop/product/%d8%ac%d9%88%db%8c%d9%86%d8%aa/",
+      "image": "https://defrost.ir/shop/wp-content/uploads/2018/01/جوینت-کوتاه-سرگشاد1-600x600.jpg",
+      "description": {
+        "fa": "",
+        "en": "",
+        "ar": "",
+        "ru": "",
+        "kk": "",
+        "ku": "",
+        "hy": ""
+      }
+    }
+  ]
+}
